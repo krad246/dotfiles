@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# user-specific installs
+PATH_add "$LOCAL_BIN"
+
+# rust install
+if has cargo; then
+    PATH_add "$CARGO_BIN"
+fi
+
+# go install
+if has go; then
+    PATH_add "$GOBIN"
+fi
+
+# pyenv install
+if has pyenv; then
+    PATH_add "$PYENV_BIN"
+fi
+
+if has dotnet; then
+    PATH_add "$DOTNET_TOOLS"
+fi

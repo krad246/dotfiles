@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# Root of dotfiles directory
+export DOTFILES="$HOME/.dotfiles"
+
+# user-specific installs
+export LOCAL="$HOME/.local"
+export LOCAL_BIN="$LOCAL/bin"
+export LOCAL_LIB="$LOCAL/lib"
+
+# rust install
+export CARGO_HOME="$HOME/.cargo"
+export CARGO_BIN="$CARGO_HOME/bin"
+export RUSTUP_HOME="$HOME/.rustup"
+
+# variation on ccache for both Rust and C
+export RUSTC_WRAPPER="$CARGO_BIN/sccache"
+
+# go install
+export GOPATH="$HOME/.go"
+export GOBIN="$GOPATH/bin"
+
+# pyenv install
+export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_BIN="$PYENV_ROOT/bin"
+
+# dotnet install
+export DOTNET_ROOT="$HOME/.dotnet"
+export DOTNET_TOOLS="$DOTNET_ROOT/tools"
+
+# shell scripts and libraries
+export SHLIB_ROOT="$HOME/.shlibs"

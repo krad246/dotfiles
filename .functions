@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+eval "$(direnv stdlib)"
+
+source_if_exists() {
+    if [ -n "$1" ] && [ -f "$1" ] && [ -r "$1" ]; then
+        # shellcheck disable=SC1090
+        source "$1"
+    fi
+}
+
+path_prepend() {
+    local var="$1"
+    shift 1
+
+    # the variable named behind 'var' is modified in place.
+    path_add "$var" "$@"
+    # echo "${!var}"
+}
+
+# v a b c d -> v a b c d
+path_append() {
+    local var="$1"
+    shift 1
+
+    local empty=""
+    path_add empty "$@"
+    # path_prepend empty "${!var}"
+    echo "$empty"
+}
+
+sudo() {
+    if alias "$1" &>/dev/null; then
+        $(type "$1" | sed -E 's/^.*`(.*).$/\1/') "${@:2}"
+    else
+        command sudo "$@"
+    fi
+}

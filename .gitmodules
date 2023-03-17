@@ -1,0 +1,12 @@
+[submodule "external/bash-oo-framework"]
+	path = external/bash-oo-framework
+	url = https://github.com/niieani/bash-oo-framework
+[submodule "external/bash-sensible"]
+	path = external/bash-sensible
+	url = https://github.com/mrzool/bash-sensible
+[submodule "external/git-subrepo"]
+	path = external/git-subrepo
+	url = https://github.com/ingydotnet/git-subrepo
+[submodule "external/git-config"]
+	path = external/git-config
+	url = git@gist.github.com:5b7a59607d78811864cc93195d045a35.git
