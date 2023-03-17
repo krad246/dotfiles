@@ -14,10 +14,7 @@ if has go; then
 fi
 
 # pyenv install
-if has pyenv; then
-    PATH_add "$PYENV_BIN"
-fi
+PATH_add "$PYENV_BIN"
 
-if has dotnet; then
-    PATH_add "$DOTNET_TOOLS"
-fi
+# dotnet install
+PATH_add "$DOTNET_TOOLS"

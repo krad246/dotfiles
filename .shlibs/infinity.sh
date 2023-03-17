@@ -5,4 +5,5 @@ script_root="$(dirname "$script_path")"
 infinity="$script_root/bash-oo-framework"
 launch="$infinity/your-script.sh"
 
+# shellcheck disable=SC1090
 . "$launch"
