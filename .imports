@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 source_if_exists "$SHLIB_ROOT/infinity.sh"
+source_if_exists "$SHLIB_ROOT/subrepo.sh"
+source_if_exists "$SHLIB_ROOT/extras.sh"
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"

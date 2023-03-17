@@ -2,8 +2,8 @@
 
 script_path="$(realpath "${BASH_SOURCE[0]}")"
 script_root="$(dirname "$script_path")"
-infinity="$script_root/bash-oo-framework"
-launch="$infinity/your-script.sh"
+subrepo="$script_root/git-subrepo"
+launch="$subrepo/.rc"
 
 # shellcheck disable=SC1090
 . "$launch"

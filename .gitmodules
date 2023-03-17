@@ -10,3 +10,6 @@
 [submodule "external/git-config"]
 	path = external/git-config
 	url = git@gist.github.com:5b7a59607d78811864cc93195d045a35.git
+[submodule "external/git-extra-commands"]
+	path = external/git-extra-commands
+	url = https://github.com/unixorn/git-extra-commands/

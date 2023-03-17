@@ -79,3 +79,5 @@ manifests/
 .local/share/webkitgtk/
 .local/share/xorg/
 .local/state/
+.local/share/Trash/files/.envrc
+.local/share/Trash/info/.envrc.trashinfo
