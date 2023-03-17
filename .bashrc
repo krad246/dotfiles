@@ -20,13 +20,11 @@ _() {
 # set up a basic standard library to pull from
 _ "$HOME/.functions"
 
-# pull in additional libraries
-_ "$HOME/.imports"
-
 # discover exports we want (including paths)
 _ "$HOME/.exports"
 
-# add executables and tools
+# pull in additional libraries and tools
+_ "$HOME/.imports"
 _ "$HOME/.paths"
 
 # then pull in the rest
