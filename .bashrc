@@ -3,7 +3,7 @@
 # If not running interactively, don't do anything
 case $- in
 *i*) ;;
-*) return ;;
+*) exit 0 ;;
 esac
 
 # Anonymous source-if-exists function
@@ -17,26 +17,13 @@ _() {
     done
 }
 
-# set up a basic standard library to pull from
-_ "$HOME/.functions"
-
-# discover exports we want (including paths)
-_ "$HOME/.exports"
-
-# pull in additional libraries and tools
-_ "$HOME/.paths"
-
-# then pull in the rest
-_ "$HOME/.aliases"
-_ "$HOME/.shopts"
-_ "$HOME/.completions"
-
-eval "$(starship init bash)"
-eval "$(direnv hook bash)"
-
-_ "$HOME/.imports"
+ROOT="$(dirname $0)"
+_ "$ROOT/.functions"
+strict_env _ "$ROOT/.exports"
+strict_env _ "$ROOT/.paths"
+strict_env _ "$ROOT/.aliases"
+_ "$ROOT/.shopts"
+_ "$ROOT/.completions"
+_ "$ROOT/.imports"
 
 unset -f _
-
-# make less more friendly for non-text input files, see lesspipe(1)
-# [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"

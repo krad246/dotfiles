@@ -1,15 +1,102 @@
-[submodule "external/bash-oo-framework"]
-	path = external/bash-oo-framework
-	url = https://github.com/niieani/bash-oo-framework
-[submodule "external/bash-sensible"]
-	path = external/bash-sensible
-	url = https://github.com/mrzool/bash-sensible
-[submodule "external/git-subrepo"]
-	path = external/git-subrepo
-	url = https://github.com/ingydotnet/git-subrepo
-[submodule "external/git-config"]
-	path = external/git-config
-	url = git@gist.github.com:5b7a59607d78811864cc93195d045a35.git
-[submodule "external/git-extra-commands"]
-	path = external/git-extra-commands
-	url = https://github.com/unixorn/git-extra-commands/
+[submodule "packages/git/git-subrepo"]
+path = packages/git/git-subrepo
+url = https://github.com/ingydotnet/git-subrepo
+[submodule "packages/git/git-config"]
+path = packages/git/git-config
+url = https://gist.github.com/krad246/5b7a59607d78811864cc93195d045a35
+[submodule "packages/git/git-extra-commands"]
+path = packages/git/git-extra-commands
+url = git@github.com:unixorn/git-extra-commands.git
+[submodule "packages/bash/bash-oo-framework"]
+path = packages/bash/bash-oo-framework
+url = https://github.com/niieani/bash-oo-framework
+[submodule "packages/bash/bash-lambda"]
+path = packages/bash/bash-lambda
+url = https://github.com/spencertipping/bash-lambda
+[submodule "packages/bash/bash-sensible"]
+path = packages/bash/bash-sensible
+url = https://github.com/mrzool/bash-sensible
+[submodule "packages/shell/fzf"]
+path = packages/shell/fzf
+url = https://github.com/junegunn/fzf
+[submodule "packages/shell/fd"]
+path = packages/shell/fd
+url = https://github.com/sharkdp/fd
+[submodule "packages/shell/zoxide"]
+path = packages/shell/zoxide
+url = https://github.com/ajeetdsouza/zoxide
+[submodule "packages/shell/ripgrep"]
+path = packages/shell/ripgrep
+url = https://github.com/BurntSushi/ripgrep
+[submodule "packages/shell/delta"]
+path = packages/shell/delta
+url = https://github.com/dandavison/delta
+[submodule "packages/shell/pipr"]
+path = packages/shell/pipr
+url = https://github.com/elkowar/pipr
+[submodule "packages/shell/thefuck"]
+path = packages/shell/thefuck
+url = https://github.com/nvbn/thefuck
+[submodule "packages/shell/bat"]
+path = packages/shell/bat
+url = https://github.com/sharkdp/bat
+[submodule "packages/shell/hexyl"]
+path = packages/shell/hexyl
+url = https://github.com/sharkdp/hexyl
+[submodule "packages/shell/pastel"]
+path = packages/shell/pastel
+url = https://github.com/sharkdp/pastel
+[submodule "packages/shell/shell-functools"]
+path = packages/shell/shell-functools
+url = https://github.com/sharkdp/shell-functools
+[submodule "packages/shell/lscolors"]
+path = packages/shell/lscolors
+url = https://github.com/sharkdp/lscolors
+[submodule "packages/shell/trigger"]
+path = packages/shell/trigger
+url = https://github.com/sharkdp/trigger
+[submodule "packages/shell/hyperfine"]
+path = packages/shell/hyperfine
+url = git@github.com:sharkdp/hyperfine.git
+[submodule "packages/shell/rusync"]
+path = packages/shell/rusync
+url = https://github.com/your-tools/rusync
+[submodule "packages/shell/pycp"]
+path = packages/shell/pycp
+url = https://github.com/dmerejkowsky/pycp
+[submodule "packages/shell/tuc"]
+path = packages/shell/tuc
+url = https://github.com/riquito/tuc
+[submodule "packages/shell/dust"]
+path = packages/shell/dust
+url = https://github.com/bootandy/dust
+[submodule "packages/shell/lsd"]
+path = packages/shell/lsd
+url = https://github.com/lsd-rs/lsd
+[submodule "packages/node/n"]
+path = packages/node/n
+url = git@github.com:tj/n.git
+[submodule "packages/shell/direnv"]
+path = packages/shell/direnv
+url = https://github.com/direnv/direnv/
+[submodule "packages/python/pyenv"]
+path = packages/python/pyenv
+url = git@github.com:pyenv/pyenv.git
+[submodule "packages/rust/rustup"]
+path = packages/rust/rustup
+url = https://github.com/rust-lang/rustup
+[submodule "packages/rust/sccache"]
+path = packages/rust/sccache
+url = https://github.com/mozilla/sccache
+[submodule "packages/go/go"]
+path = packages/go/go
+url = https://go.googlesource.com/go
+[submodule "packages/shell/starship"]
+path = packages/shell/starship
+url = git@github.com:starship/starship.git
+[submodule "packages/shell/vivid"]
+	path = packages/shell/vivid
+	url = git@github.com:sharkdp/vivid.git
+[submodule "packages/shell/bat-extras"]
+	path = packages/shell/bat-extras
+	url = https://github.com/eth-p/bat-extras

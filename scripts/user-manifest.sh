@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euxo pipefail
+set -euo pipefail
 
 script=$(realpath "$0")
 script_dir=$(dirname "$script")
@@ -22,12 +22,12 @@ default() {
     names <(merge "$base" "$rem")
 }
 
-user() {
+packages() {
     merge <(current) <(default "$recovery_root")
 }
 
 if [ "$0" = "${BASH_SOURCE[0]}" ]; then
-    user
+    packages
 fi
 
-set +euxo pipefail
+set +euo pipefail

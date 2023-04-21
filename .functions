@@ -1,38 +1,132 @@
 #!/usr/bin/env bash
 
+set -a
+
+# -------------------------------------------------------------------------------------------------
 eval "$(direnv stdlib)"
 
+# -------------------------------------------------------------------------------------------------
 source_if_exists() {
     if [ -n "$1" ] && [ -f "$1" ] && [ -r "$1" ]; then
         # shellcheck disable=SC1090
         source "$1"
-    fi
-}
-
-path_prepend() {
-    local var="$1"
-    shift 1
-
-    # the variable named behind 'var' is modified in place.
-    path_add "$var" "$@"
-    # echo "${!var}"
-}
-
-# v a b c d -> v a b c d
-path_append() {
-    local var="$1"
-    shift 1
-
-    local empty=""
-    path_add empty "$@"
-    # path_prepend empty "${!var}"
-    echo "$empty"
-}
-
-sudo() {
-    if alias "$1" &>/dev/null; then
-        $(type "$1" | sed -E 's/^.*`(.*).$/\1/') "${@:2}"
+        return $(command true)
     else
-        command sudo "$@"
+        perror ENOENT "$1"
+        return $(command false)
     fi
 }
+
+# -------------------------------------------------------------------------------------------------
+source_dir() {
+    n_frames="${#BASH_SOURCE[@]}"
+    if [[ "$n_frames" -gt 1 ]]; then
+        caller_stackframe="${BASH_SOURCE[1]}"
+        command echo "$caller_stackframe"
+        return $(command true)
+    else
+        return $(command false)
+    fi
+}
+
+# -------------------------------------------------------------------------------------------------
+source_relpath() {
+    frame="$(command dirname $(source_dir))"
+    if [ -z "$frame" ]; then
+        return $(false)
+    fi
+
+    for f in "$@"; do
+        command realpath --relative-to $frame $f
+    done
+}
+
+# -------------------------------------------------------------------------------------------------
+source_rel() {
+    for f in "$(source_relpath "$@")"; do
+        source "$f"
+    done
+}
+
+# -------------------------------------------------------------------------------------------------
+error() {
+    log_error >&2 "$*"
+}
+
+# -------------------------------------------------------------------------------------------------
+die() {
+    log_error >&2 "$*"
+    exit 1
+}
+
+# -------------------------------------------------------------------------------------------------
+string() {
+    escape "$(quote $1)"
+}
+
+# -------------------------------------------------------------------------------------------------
+raw() {
+    unquote "$(unescape "$1")"
+}
+
+# -------------------------------------------------------------------------------------------------
+quote() {
+    local quoted=${1//\'/\'\\\'\'}
+    builtin printf "'%s'" "$quoted"
+}
+
+# -------------------------------------------------------------------------------------------------
+unquote() {
+    eval builtin printf %s "$1" 2>/dev/null
+}
+
+# -------------------------------------------------------------------------------------------------
+escape() {
+    old_lc="${LC_ALL}"
+    export LC_ALL=C
+    command echo "$@" |
+        command sed -e 's/[^a-zA-Z0-9,._+@%/-]/\\&/g' |
+        command sed -e '1{$s/^$/""/}' |
+        command sed -e '1!s/^/"/' |
+        command sed -e '$!s/$/"/'
+
+    export LC_ALL="$old_lc"
+}
+
+# -------------------------------------------------------------------------------------------------
+unescape() {
+    old_lc="${LC_ALL}"
+    export LC_ALL=C
+    command echo "$@" |
+        command sed -e '$!s/"$//' |
+        command sed -e '2,$s/^"//' |
+        command sed -e '1s/^"//' |
+        command sed -e 's/\\\(.\)/\1/g'
+
+    export LC_ALL="$old_lc"
+}
+
+# -------------------------------------------------------------------------------------------------
+perror() {
+    local code="$1"
+    shift
+
+    n_frames="${#BASH_SOURCE[@]}"
+    if [[ "$n_frames" -gt 1 ]]; then
+        error "${BASH_SOURCE[1]}: $(errno $code)"
+    else
+        error "$(caller): $(errno $code)"
+    fi
+}
+
+# -------------------------------------------------------------------------------------------------
+dir() {
+    command dirname "$@"
+}
+
+# -------------------------------------------------------------------------------------------------
+notdir() {
+    command basename "$@"
+}
+
+set +a

@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# user-specific installs
-PATH_add "$LOCAL_BIN"
-
 # rust install
 if has cargo; then
     PATH_add "$CARGO_BIN"
