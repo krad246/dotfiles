@@ -1,0 +1,13 @@
+source .bashrc
+---
+bash -x .bashrc && echo "$(source_relpath .dircolors)"
+---
+declare -f source_relpath
+---
+source_relpath
+---
+bash -c "source_relpath a"
+---
+declare -f source_relpath
+---
+source ~/.bashrc; declare -f source_relpath

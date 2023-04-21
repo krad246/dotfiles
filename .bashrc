@@ -17,13 +17,13 @@ _() {
     done
 }
 
-ROOT="$(dirname $0)"
-_ "$ROOT/.functions"
-strict_env _ "$ROOT/.exports"
-strict_env _ "$ROOT/.paths"
-strict_env _ "$ROOT/.aliases"
-_ "$ROOT/.shopts"
-_ "$ROOT/.completions"
-_ "$ROOT/.imports"
+DOTFILES_ROOT="$(dirname ${BASH_SOURCE[@]})"
+_ "$DOTFILES_ROOT/.functions"
+strict_env _ "$DOTFILES_ROOT/.exports"
+strict_env _ "$DOTFILES_ROOT/.paths"
+strict_env _ "$DOTFILES_ROOT/.aliases"
+strict_env _ "$DOTFILES_ROOT/.shopts"
+strict_env _ "$DOTFILES_ROOT/.completions"
+_ "$DOTFILES_ROOT/.imports"
 
 unset -f _
